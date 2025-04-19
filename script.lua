@@ -1,4 +1,4 @@
-	local val1 = 2
+local val1 = 2
 	local val2 = false
 	
 	local v1 = Instance.new("ScreenGui", game.Players.LocalPlayer.PlayerGui)
@@ -74,11 +74,11 @@
 				v6.BackgroundColor3 = Color3.new(0.372549, 1, 0.27451)
 						v6.Text = "On"
 						val2 = true
+						local u2 = game.Workspace:GetDescendants()
+						for i, f in ipairs(u2) do
+							if f.Name == "Coin_Server" then
 
-						for i, v in ipairs(u2:GetChildren()) do
-							if v.Name == "Coin_Server" then
-
-								for i, v in ipairs(v:GetChildren()) do
+								for i, v in ipairs(f:GetChildren()) do
 									if v:IsA("MeshPart") then
 										if val2 == true then
 
