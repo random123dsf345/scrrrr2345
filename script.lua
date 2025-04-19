@@ -1,4 +1,4 @@
-local val1 = 2
+	local val1 = 2
 	local val2 = false
 	
 	local v1 = Instance.new("ScreenGui", game.Players.LocalPlayer.PlayerGui)
@@ -85,9 +85,29 @@ local val1 = 2
 
 					for i, v in ipairs(u2:GetChildren()) do
 						if v.Name == "Coin_Server" then
+
+							local player = game.Players.LocalPlayer
+							local character = player.Character
+
+							local function getDistance(part1, part2)
+								return (part1.Position - part2.Position).magnitude
+							end
+
+							local nearestPart
+							local nearestDistance = math.huge()
+
 							for i, v in ipairs(v:GetChildren()) do
 								if v:IsA("MeshPart") then
 									if val2 == true then
+
+										local distance = getDistance(character.PrimaryPart, v.Parent)
+										if distance < nearestDistance then
+											nearestPart = part
+											nearestDistance = distance
+										end
+
+										print(nearestDistance)
+
 										local u3 = game.Players.LocalPlayer.Character
 										local u4 = u3:WaitForChild("HumanoidRootPart")
 										local u5 = game:GetService("TweenService")
@@ -109,7 +129,7 @@ local val1 = 2
 										end
 										print(u6)
 										print(val1)
-										local u7 = u5:Create(u4, TweenInfo.new(val1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = v.Parent.CFrame}):Play()
+										local u7 = u5:Create(u4, TweenInfo.new(val1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = nearestPart}):Play()
 										task.wait(val1)
 									end
 								end
