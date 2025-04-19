@@ -89,12 +89,12 @@
 							local player = game.Players.LocalPlayer
 							local character = player.Character
 
-							local function getDistance(part1, part2)
+							function getDistance(part1, part2)
 								return (part1.Position - part2.Position).magnitude
 							end
 
 							local nearestPart
-							local nearestDistance = math.huge()
+							local nearestDistance = math.huge
 
 							for i, v in ipairs(v:GetChildren()) do
 								if v:IsA("MeshPart") then
@@ -129,19 +129,21 @@
 										end
 										print(u6)
 										print(val1)
-										local u7 = u5:Create(u4, TweenInfo.new(val1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = nearestPart}):Play()
+										local u7 = u5:Create(u4, TweenInfo.new(val1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = nearestPart.CFrame}):Play()
 										task.wait(val1)
 									end
 								end
 							end
-						until v6.Text == "Off"
+						end
 					end
 				end
 			end
+		until v6.Text == "Off"
 		else
 
 			v6.BackgroundColor3 = Color3.new(1, 0.2, 0.2)
 			v6.Text = "Off"
 			val2 = false
+
 		end
 	end)
