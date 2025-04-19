@@ -1,122 +1,107 @@
-local val1 = 2
-	local val2 = false
-	
-	local v1 = Instance.new("ScreenGui", game.Players.LocalPlayer.PlayerGui)
-	v1.Name = "SadlunovAutofarm"
-	v1.ResetOnSpawn = false
-	
-	local i1 = Instance.new("ImageLabel", v1)
-	i1.AnchorPoint = Vector2.new(0.5, 0.5)
-	i1.Position = UDim2.new(0.5, 0, 0.5, 0)
-	i1.Size = UDim2.new(0.285, 0, 0.54, 0)
-	i1.BackgroundTransparency = 1
-	i1.Image = "http://www.roblox.com/asset/?id=89777128616316"
-	local i2 = Instance.new("UIGradient", i1)
-	i2.Transparency = NumberSequence.new{
-		NumberSequenceKeypoint.new(0, 1, 0),
-		NumberSequenceKeypoint.new(0.2, 0.925, 0),
-		NumberSequenceKeypoint.new(0.5, 0.535, 0),
-		NumberSequenceKeypoint.new(0.8, 0.925, 0),
-		NumberSequenceKeypoint.new(1, 1, 0)
-	}
-	i2.Offset = Vector2.new(-2, 0)
-	game:GetService("TweenService"):Create(i1.UIGradient, TweenInfo.new(2.5), {Offset = Vector2.new(2, 0)}):Play()
-	task.wait(2)
-	i2.Offset = Vector2.new(-2, 0)
-	game:GetService("TweenService"):Create(i1.UIGradient, TweenInfo.new(2.5), {Offset = Vector2.new(2, 0)}):Play()
-	task.wait(2)
-	i1.ImageTransparency = 1
-	i2:Destroy()
-	game:GetService("TweenService"):Create(i1, TweenInfo.new(1), {ImageTransparency = 0}):Play()
-	task.wait(2)
-	game:GetService("TweenService"):Create(i1, TweenInfo.new(0.75), {ImageTransparency = 1}):Play()
-	task.wait(1)
-	local v2 = Instance.new("Frame", v1)
-	v2.AnchorPoint = Vector2.new(0.5, 0.5)
-	v2.Position = UDim2.new(0.935, 0, 0.780, 0)
-	v2.Size = UDim2.new(0.110, 0, 0.2, 0)
-	v2.BorderSizePixel = 0
-	v2.BackgroundColor3 = Color3.new(0, 0, 0)
-	v2.BackgroundTransparency = 0.5
-	local v3 = Instance.new("UICorner", v2)
-	v3.CornerRadius = UDim.new(0.1, 0)
-	local v4 = Instance.new("UIStroke", v2)
-	v4.Thickness = 1.35
-	local v4 = Instance.new("TextLabel", v2)
-	v4.Text = "SADLUNOV AUTOFARM"
-	v4.AnchorPoint = Vector2.new(0.5, 0.5)
-	v4.Position = UDim2.new(0.5, 0, 0, 0)
-	v4.BackgroundTransparency = 1
-	v4.Font = Enum.Font.Gotham
-	v4.TextScaled = true
-	v4.Size = UDim2.new(1, 0, 0.23, 0)
-	v4.TextColor3 = Color3.new(1, 1, 1)
-	v4.Name = "1"
-	local v5 = Instance.new("UIListLayout", v2)
-	v5.Padding = UDim.new(0.05, 0)
-	v5.HorizontalAlignment = Enum.HorizontalAlignment.Center
-	v5.VerticalAlignment = Enum.VerticalAlignment.Top
-	local v6 = Instance.new("TextButton", v2)
-	v6.Name = "OnOff"
-	v6.Size = UDim2.new(0.895, 0, 0.235, 0)
-	v6.TextScaled = true
-	v6.Text = "Off"
-	v6.BackgroundColor3 = Color3.new(1, 0.235294, 0.235294)
-	local v7 = Instance.new("UICorner", v6)
-	v7.CornerRadius = UDim.new(1, 0)
-	local v8 = Instance.new("UITextSizeConstraint", v6)
-	v8.MaxTextSize = 13
-	v6.MouseButton1Click:Connect(function()
-		if val2 == false then
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
+local Window = Rayfield:CreateWindow({
+	Name = "SADLUNOV MM2",
+	LoadingTitle = "Sadlunov SCRIPTS",
+	LoadingSubtitle = "By sadlunov",
+	ConfigurationSaving = {
+		Enabled = false,
+		FolderName = nil, -- Create a custom folder for your hub/game
+		FileName = "FileName"
+	},
+	Discord = {
+		Enabled = false,
+		Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
+		RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+	},
+	KeySystem = true, -- Set this to true to use our key system
+	KeySettings = {
+		Title = "Sadlunov KeySystem",
+		Subtitle = "Enter key",
+		Note = "Get key: https://t.me/sadlunovFamily",
+		FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+		SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+		GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+		Key = {"SadlunovTop"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+	}
+})
+
+local MainTab = Window:CreateTab("📌 Main", nil)
+local MainSection1 = MainTab:CreateSection("Autofarm 2025")
+
+local val1 = false
+local val2 = 0
+
+local Toggle = MainTab:CreateToggle({
+   Name = "EggFarm",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   print("its okey man")
+	if val1 == false then
+	val1 = true
+	print("false? start!")
 			repeat wait()
 
-				v6.BackgroundColor3 = Color3.new(0.372549, 1, 0.27451)
-						v6.Text = "On"
-						val2 = true
 						local u2 = game.Workspace:GetDescendants()
 						for i, f in ipairs(u2) do
 							if f.Name == "Coin_Server" then
 
 								for i, v in ipairs(f:GetChildren()) do
 									if v:IsA("MeshPart") then
-										if val2 == true then
+
+										local SelectedPart = {false, false}
+											if v:IsA("MeshPart") then
+												local Formula = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.Position)
+													local success, errormessage = pcall(function()
+														if Formula.Magnitude < SelectedPart[1] then
+															SelectedPart[1] = Formula.Magnitude
+															SelectedPart[2] = v
+														end
+													end)
+													if not success then
+														SelectedPart[1] = Formula.Magnitude
+														SelectedPart[2] = v
+													end
+											end
+
+										if val1 == true then
+										print("gooo")
 
 											local u3 = game.Players.LocalPlayer.Character
 											local u4 = u3:WaitForChild("HumanoidRootPart")
 											local u5 = game:GetService("TweenService")
-											local u6 = (v.Parent.Position - u4.Position).Magnitude
+											local u6 = (v.Position - u4.Position).Magnitude
 											if u6 > 150 and u6 < 250 then
-												val1 = 8
+												val2 = 8
 											elseif u6 > 70 and u6 < 150 then
-												val1 = 6
+												val2 = 5
 											elseif u6 > 50 and u6 < 70 then
-												val1 = 4
+												val2 = 3
 											elseif u6 > 30 and u6 < 50 then
-												val1 = 3
+												val2 = 2.5
 											elseif u6 > 10 and u6 < 30 then
-												val1 = 2
+												val2 = 1.5
 											elseif u6 > 5 and u6 < 10 then
-												val1 = 1
+												val2 = 1.5
 											else
-												val1 = 0.5
+												val2 = 1
 											end
 											print(u6)
 											print(val1)
-											local u7 = u5:Create(u4, TweenInfo.new(val1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = v.CFrame}):Play()
-											task.wait(val1)
+											local u7 = u5:Create(u4, TweenInfo.new(val2, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = SelectedPart[2].Parent.CFrame}):Play()
+											print("tweened")
+											task.wait(val2)
 										end
 									end
 								end
 							end
 						end
 				
-			until v6.Text == "Off"
-		else
-
-			v6.BackgroundColor3 = Color3.new(1, 0.2, 0.2)
-			v6.Text = "Off"
-			val2 = false
-
-		end
-	end)
+			until val1 == false
+	else
+		val1 = false
+		print("setted false")
+	end
+   end,
+})
