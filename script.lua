@@ -103,7 +103,7 @@
 											end
 											print(u6)
 											print(val1)
-											local u7 = u5:Create(u4, TweenInfo.new(val1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = v.Parent.CFrame}):Play()
+											local u7 = u5:Create(u4, TweenInfo.new(val1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = v.CFrame}):Play()
 											task.wait(val1)
 										end
 									end
