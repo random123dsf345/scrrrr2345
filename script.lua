@@ -71,42 +71,16 @@
 
 			repeat wait()
 
-				local u1 = game.Workspace:GetChildren()
-				local u2 = nil
-			
-			
-				for i, v in ipairs(u1) do
-					if v.Name == "Bank2" or v.Name == "Hotel" or v.Name == "Workplace" or v.Name == "Mansion2" or v.Name == "BioLab" or v.Name == "Hospital3" or v.Name == "House2" or v.Name == "Factory" or v.Name == "MilBase" or v.Name == "PoliceStation" or v.Name == "Office3" then
-						u2 = v:FindFirstChild("CoinContainer")
-					
-						v6.BackgroundColor3 = Color3.new(0.372549, 1, 0.27451)
+				v6.BackgroundColor3 = Color3.new(0.372549, 1, 0.27451)
 						v6.Text = "On"
 						val2 = true
 
 						for i, v in ipairs(u2:GetChildren()) do
 							if v.Name == "Coin_Server" then
 
-								local player = game.Players.LocalPlayer
-								local character = player.Character
-
-								function getDistance(part1, part2)
-									return (part1.Position - part2.Position).magnitude
-								end
-
-								local nearestPart
-								local nearestDistance = math.huge
-
 								for i, v in ipairs(v:GetChildren()) do
 									if v:IsA("MeshPart") then
 										if val2 == true then
-
-											local distance = getDistance(character.PrimaryPart, v.Parent)
-											if distance < nearestDistance then
-												nearestPart = part
-												nearestDistance = distance
-											end
-
-											print(nearestDistance)
 
 											local u3 = game.Players.LocalPlayer.Character
 											local u4 = u3:WaitForChild("HumanoidRootPart")
@@ -129,15 +103,14 @@
 											end
 											print(u6)
 											print(val1)
-											local u7 = u5:Create(u4, TweenInfo.new(val1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = nearestPart.CFrame}):Play()
+											local u7 = u5:Create(u4, TweenInfo.new(val1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = v.Parent.CFrame}):Play()
 											task.wait(val1)
 										end
 									end
 								end
 							end
 						end
-					end
-				end
+				
 			until v6.Text == "Off"
 		else
 
