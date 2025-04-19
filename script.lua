@@ -3,6 +3,7 @@
 	
 	local v1 = Instance.new("ScreenGui", game.Players.LocalPlayer.PlayerGui)
 	v1.Name = "SadlunovAutofarm"
+	v1.ResetOnSpawn = false
 	
 	local i1 = Instance.new("ImageLabel", v1)
 	i1.AnchorPoint = Vector2.new(0.5, 0.5)
