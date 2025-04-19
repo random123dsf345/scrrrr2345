@@ -71,7 +71,7 @@
 			
 			
 			for i, v in ipairs(u1) do
-				if v.Name == "Bank2" or v.Name == "Hotel" or v.Name == "Workplace" or v.Name == "Mansion2" or v.Name == "BioLab" or v.Name == "Hospital3" or v.Name == "House2" or v.Name == "Factory" or v.Name == "Milbase" or v.Name == "PoliceStation" or v.Name == "Office3" then
+				if v.Name == "Bank2" or v.Name == "Hotel" or v.Name == "Workplace" or v.Name == "Mansion2" or v.Name == "BioLab" or v.Name == "Hospital3" or v.Name == "House2" or v.Name == "Factory" or v.Name == "MilBase" or v.Name == "PoliceStation" or v.Name == "Office3" then
 					local u2 = v.CoinContainer
 					
 					v6.BackgroundColor3 = Color3.new(0.372549, 1, 0.27451)
