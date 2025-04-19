@@ -1,4 +1,4 @@
-    local val1 = 2
+	local val1 = 2
 	local val2 = false
 	
 	local v1 = Instance.new("ScreenGui", game.Players.LocalPlayer.PlayerGui)
@@ -67,48 +67,58 @@
 	v8.MaxTextSize = 13
 	v6.MouseButton1Click:Connect(function()
 		if val2 == false then
-			local u1 = game.Workspace:WaitForChild("Workplace")
-			local u2 = u1:WaitForChild("CoinContainer")
+			local u1 = game.Workspace:GetChildren()
+			
+			
+			for i, v in ipairs(u1) do
+				if v.Name == "Bank2" or v.Name == "Hotel" or v.Name == "Workplace" or v.Name == "Mansion2" or v.Name == "BioLab" or v.Name == "Hospital3" or v.Name == "House2" or v.Name == "Factory" or v.Name == "Milbase" or v.Name == "PoliceStation" or v.Name == "Office3" then
+					local u2 = v.CoinContainer
+					
+					v6.BackgroundColor3 = Color3.new(0.372549, 1, 0.27451)
+					v6.Text = "On"
+					val2 = true
 
-			v6.BackgroundColor3 = Color3.new(0.372549, 1, 0.27451)
-			v6.Text = "On"
-			val2 = true
-
-			repeat wait()
-				for i, v in ipairs(u2:GetChildren()) do
-					if v.Name == "Coin_Server" then
-						for i, v in ipairs(v:GetChildren()) do
-							if v:IsA("MeshPart") then
-								if val2 == true then
-									local u3 = game.Players.LocalPlayer.Character
-									local u4 = u3:WaitForChild("HumanoidRootPart")
-									local u5 = game:GetService("TweenService")
-									local u6 = (v.Parent.Position - u4.Position).Magnitude
-									if u6 > 150 and u6 < 250 then
-										val1 = 8
-									elseif u6 > 70 and u6 < 150 then
-										val1 = 6
-									elseif u6 > 50 and u6 < 70 then
-										val1 = 4
-									elseif u6 > 30 and u6 < 50 then
-										val1 = 3
-									elseif u6 > 10 and u6 < 30 then
-										val1 = 2
-									elseif u6 > 5 and u6 < 10 then
-										val1 = 1
-									else
-										val1 = 0.5
+					if u2 == nil then
+						--skip
+					else
+						repeat wait()
+							for i, v in ipairs(u2:GetChildren()) do
+								if v.Name == "Coin_Server" then
+									for i, v in ipairs(v:GetChildren()) do
+										if v:IsA("MeshPart") then
+											if val2 == true then
+												local u3 = game.Players.LocalPlayer.Character
+												local u4 = u3:WaitForChild("HumanoidRootPart")
+												local u5 = game:GetService("TweenService")
+												local u6 = (v.Parent.Position - u4.Position).Magnitude
+												if u6 > 150 and u6 < 250 then
+													val1 = 8
+												elseif u6 > 70 and u6 < 150 then
+													val1 = 6
+												elseif u6 > 50 and u6 < 70 then
+													val1 = 4
+												elseif u6 > 30 and u6 < 50 then
+													val1 = 3
+												elseif u6 > 10 and u6 < 30 then
+													val1 = 2
+												elseif u6 > 5 and u6 < 10 then
+													val1 = 1
+												else
+													val1 = 0.5
+												end
+												print(u6)
+												print(val1)
+												local u7 = u5:Create(u4, TweenInfo.new(val1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = v.Parent.CFrame}):Play()
+												task.wait(val1)
+											end
+										end
 									end
-									print(u6)
-									print(val1)
-									local u7 = u5:Create(u4, TweenInfo.new(val1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {CFrame = v.Parent.CFrame}):Play()
-									task.wait(val1)
 								end
 							end
-						end
+						until v6.Text == "Off"
 					end
 				end
-			until v6.Text == "Off"
+			end
 		else
 			v6.BackgroundColor3 = Color3.new(1, 0.2, 0.2)
 			v6.Text = "Off"
